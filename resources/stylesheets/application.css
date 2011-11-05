@@ -28,11 +28,12 @@ strong {
 
 #header {
   overflow: visible;
-  @include background(linear-gradient(#0074b6, #00348e 95%));
+  @include background(linear-gradient(left,#0074b6, #00348e 95%));
   border-bottom: 1px solid rgba(white, 0.1);
   .sc-segmented-view {
     width: auto;
     .sc-segment-view,.sc-middle-segment {
+      display: block;
       @include transition-property(background);
       @include transition-duration(0.75s);
       &:hover {
@@ -40,26 +41,26 @@ strong {
           color: #ffbd70;
         }
       }
-      height: 100%;
+      /* height: 100%;*/
       background: none;
       border: none;
-      padding: 0 30px;
+      padding: 30px 0;
       font-size: .8em;
       label {
         @include transition-property(color);
         @include transition-duration(0.75s);
         font-weight: bold;
-        position: relative;
+        /* position: relative;*/
         top: 2em;
         color: #dedede;
         @include single-text-shadow;
       }
     }
     .sc-segment-view.sel {
-      border-right: 1px solid rgba(white, 0.25);
-      border-left: 1px solid rgba(#ffffaa, 0.25);
-      padding: 0 29px 0 30px;
-      @include background(linear-gradient(left, rgba(#111111, 0.5), rgba(#222222, 0.5) 10%, rgba(#222222, 0.5) 90%, rgba(#111111, 0.5)));
+      border-top: 1px solid rgba(white, 0.25);
+      border-bottom: 1px solid rgba(#ffffaa, 0.25);
+      /* padding: 0 29px 0 30px;*/
+      @include background(linear-gradient(top, rgba(#111111, 0.5), rgba(#222222, 0.5) 10%, rgba(#222222, 0.5) 90%, rgba(#111111, 0.5)));
     }
   }
 }
@@ -121,8 +122,6 @@ strong {
       @include transition-property(left);
       @include transition-duration(0.5s);
       position: absolute;
-      left: 10px;
-      right: 10px;
       top: 50%;
       margin-top: 5px;
       color: rgba(#fff,0.75);
@@ -145,7 +144,7 @@ strong {
         @include transition-property(left);
         @include transition-duration(0.5s);
         color: white;
-        left: 10px;
+        left: 15px;
         margin-top: -15px;
       }
     }
@@ -173,13 +172,22 @@ strong {
 }
 
 #main-logo {
-  @include slice('images/logos/logo-large.png',$repeat: no-repeat);
+  @include slice("images/logos/int-logo.png",$repeat: no-repeat);
+  @include box-shadow(black 0 0 5px);
+  @include transition-property("box-shadow");
+  @include transition-duration(0.5s);
+  border: 1px solid rgba(#fff,0.5);
+  &:hover {
+    @include box-shadow(#fff 0 0 5px);
+  }
+  &.active {
+    @include box-shadow(#d87500 0 0 5px);
+  }
 }
+
+
 #mini-logo {
   @include slice('images/logos/logo-small.png',$repeat: no-repeat);
-}
-#header {
-  @include slice('images/dom/50.png',$repeat: repeat-both);
 }
 
 #home {

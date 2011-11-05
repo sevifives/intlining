@@ -29,6 +29,11 @@ Brochurno.mixin({
       }
     }),
 
+    goHome: function () {
+      Brochurno.sectionsController.set('selection',1);
+      Brochurno.statechart.sendEvent('openSection',null,1);
+    },
+
     openTwitter: function () {
       window.location = 'http://twitter.com/#!/sevifives';
     },

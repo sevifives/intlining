@@ -13,24 +13,25 @@ Brochurno.mainPage = SC.Page.design({
   mainPane: SC.MainPane.design({
     layerId: 'brochurno-app',
 
-    childViews: ['content','articleView','footer','header'],
+    childViews: ['content','articleView','header'],
 
     header: SC.View.design({
-      layout: {height: 75,top: 0},
+      layout: {left: 0,width: 200,bottom: 0},
 
       layerId: 'header',
 
       childViews: ['tabs','logo'],
 
-      logo: SC.LabelView.design({
-        layout: {height: 97, width: 354,left: 10,top: 2},
+      logo: SC.LabelView.design(SCUI.SimpleButton,{
+        layout: {height: 46,width: 85,top: 10, centerX: 0},
         layerId: 'main-logo',
+        action: 'goHome',
         classNames: ['logo']
       }),
 
       tabs: SC.SegmentedView.design({
-        layout: {right: 10,bottom: 0,top: 0},
-        align: SC.ALIGN_RIGHT,
+        layout: {right: 0,left: 0,top: 150},
+        layoutDirection: SC.LAYOUT_VERTICAL,
         itemsBinding: SC.Binding.oneWay('Brochurno.sectionsController.content'),
         itemTitleKey: 'title',
         itemValueKey: 'guid',
@@ -41,14 +42,14 @@ Brochurno.mainPage = SC.Page.design({
 
     content: SC.SceneView.design({
       layerId: 'main-content',
-      layout: {top: 76,bottom: 40},
+      layout: {top: 0,bottom: 0,left: 200},
       scenesBinding: SC.Binding.oneWay('Brochurno.sectionsController.scenes'),
       nowShowingBinding: SC.Binding.from('Brochurno.applicationViewController.contentSceneNowShowing').oneWay()
     }),
 
     // this is the singular view for any article selected
     articleView: Brochurno.ScrollView.design({
-      layout: {top: 76,bottom: 40,left: 400,right: 0},
+      layout: {top: 0,bottom: 0,left: 500,right: 0},
       isVisibleBinding: SC.Binding.oneWay('Brochurno.articlesController*selection.length').bool(),
       contentView: SC.StaticContentView.design({
         layout: {right: 20},

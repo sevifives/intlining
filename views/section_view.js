@@ -29,7 +29,7 @@ Brochurno.SectionView = SC.View.extend(
 
     view = this.createChildView(Brochurno.ScrollView,{
       layoutBinding: SC.Binding.from('articles',object).oneWay().transform(function (articles) {
-        return {top: 0,right: 0,left: (articles && articles.get('length') > 0) ? 400: 0};
+        return {top: 0,right: 0,left: (articles && articles.get('length') > 0) ? 300: 0};
       }),
       verticalOverlay: YES,
       isVisibleBinding: SC.Binding.from('*selection.length',articlesController).bool().oneWay().not(),
@@ -42,7 +42,7 @@ Brochurno.SectionView = SC.View.extend(
 
     // the list of articles the section has
     view = this.createChildView(Brochurno.ScrollView,{
-      layout: {top: 0,left: 0,bottom: 0,width: 400},
+      layout: {top: 0,left: 0,bottom: 0,width: 300},
       isVisibleBinding: SC.Binding.from('articles',object).notEmpty(null,NO).oneWay(),
       contentView: SC.ListView.design({
         classNames: ['articles'],
